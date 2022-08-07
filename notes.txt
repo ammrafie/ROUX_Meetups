@@ -1,0 +1,91 @@
+
+A linter will imporve the development.
+Beacuse this is a dev dependency we add '-D'. Meaning it'll not be included in production version.
+    npm install -D eslint
+    npx eslint --init
+    npm install -D prettier eslint-config-prettier eslint-plugin-prettier
+    [ Install VSCode Extensions: ESLint, Prettier ]
+    [ Change configuration: Go to > Code > Preferences > Settings > 
+        - Search 'ESLint' and select AutoFix on Save
+        - Search 'Save' and select Editor:Format on Save
+        - Search 'Format' and set Default Formatter to Prettier
+    ]
+    [Go to .eslintrc.json:
+        - add "prettier" to "extends" list
+        - add "prettier" to plugins list
+    ]
+    [Create new file '.prettierrc' and add:
+        {
+            "trailingComma": "es5",
+            "printWidth": 100,
+            "singleQuote": true,
+        }
+    ]
+
+There're a lot of template engines express supports. One popular one is EJS:
+    npm install ejs
+
+To recognise .EJS files add VSCode extension: EJS Language Support
+
+
+
+
+Express Middleware can also call next Middleware in the stack if any.
+
+Syntax:
+    app.use(callback)
+    app.use(path, callback)
+    app.[get|post|...](path, callback)
+
+Regular Middleware are defined on the application object with .use
+[ res.send(), res.sendFile(,someFile), res.render() ]
+
+Routing Middlewares: app.[get|put|post|delete|...](path,callback)
+
+
+URLs can be dynamic in routes, meaning routes can include parameters.
+We can also make a parameter optional by adding a ? sign at the end of it. e.g. '/speakers/:speakername?'
+
+
+Pickup at Express Routes and Middleware.
+
+
+
+There're various different session modules for express. e.g., cookie sessions.
+
+Cookie sessions store the data we want to persist for a user, encrypted on the client.
+    (We don't want user to see/manipulate what we store in that session.)
+npm install cookie-session
+
+
+
+???????????????
+What is the difference between app.locals vs response.locals?
+???????????????
+
+
+Throwing an error from an asynchronous invocation will crash your app.
+One general rule is to "Never throw from your Express routes and middlewares because it can take down your whole application"
+
+We can use try-catch as a safety measure from async-await error.
+
+To create a proper http error we need a helper module called 'http-errors'.
+    npm install http-errors
+
+
+A middleware that takes 4 arguments is the error handling middleware.
+
+
+Use body parser to parse POST bodys. 
+    npm install body-parser
+
+Body-parser is a middleware, so it operates on the request object and it should parse what's on there.
+
+
+Form validation is very important becz we can't trust data from client.
+
+express-validator module makes it very easy to perform input validation.
+
+Check out more about the technique 'Flash Messages'
+
+Check out more about XHR(AJAX), REST, etc.
